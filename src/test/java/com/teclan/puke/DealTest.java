@@ -23,7 +23,7 @@ public class DealTest {
 
     private void show(String[][] group){
         for(int i=0;i<14;i++){
-         System.out.println(String.format("%s\t%s\t%s\t%s",Puke.getHumanInfo(group[0][i]),Puke.getHumanInfo(group[1][i]),Puke.getHumanInfo(group[2][i]),Puke.getHumanInfo(group[3][i])));
+         System.out.println(String.format("%s\t%s\t%s\t%s", AbstractPuke.getHumanInfo(group[0][i]), AbstractPuke.getHumanInfo(group[1][i]), AbstractPuke.getHumanInfo(group[2][i]), AbstractPuke.getHumanInfo(group[3][i])));
         }
     }
 }

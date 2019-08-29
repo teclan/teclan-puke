@@ -9,6 +9,15 @@ public class DealTest {
 
       String[][] group =   Puke.deal();
         show(group);
+
+        System.out.println("\n=============== 整理 =============== \n");
+
+        Puke.qSort(group[0],0,13);
+        Puke.qSort(group[1],0,13);
+        Puke.qSort(group[2],0,13);
+        Puke.qSort(group[3],0,13);
+        show(group);
+
     }
 
     private void show(String[][] group){

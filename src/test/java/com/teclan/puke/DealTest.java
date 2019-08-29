@@ -1,5 +1,6 @@
 package com.teclan.puke;
 
+import com.teclan.puke.Douniu.Douniu;
 import org.junit.Test;
 
 public class DealTest {
@@ -7,15 +8,15 @@ public class DealTest {
     @Test
     public void deal(){
 
-      String[][] group =   Puke.deal();
+      String[][] group =   Douniu.deal();
         show(group);
 
         System.out.println("\n=============== 整理 =============== \n");
 
-        Puke.qSort(group[0],0,13);
-        Puke.qSort(group[1],0,13);
-        Puke.qSort(group[2],0,13);
-        Puke.qSort(group[3],0,13);
+        Douniu.qSort(group[0],0,13);
+        Douniu.qSort(group[1],0,13);
+        Douniu.qSort(group[2],0,13);
+        Douniu.qSort(group[3],0,13);
         show(group);
 
     }

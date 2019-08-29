@@ -28,51 +28,51 @@ public class Douniu extends AbstractPuke {
             "G#1#53"// 大王
     };
 
-    public  static Map<String,String> CHANGE1 = new HashMap<String, String>();
-    public  static Map<String,String> CHANGE2 = new HashMap<String, String>();
+    public static Map<String, String> CHANGE1 = new HashMap<String, String>();
+    public static Map<String, String> CHANGE2 = new HashMap<String, String>();
 
     static {
 
-        CHANGE1.put("J#0#32","11#0#32");
-        CHANGE1.put("J#1#33","11#1#33");
-        CHANGE1.put("J#2#34","11#2#34");
-        CHANGE1.put("J#3#35","11#3#35");
+        CHANGE1.put("J#0#32", "11#0#32");
+        CHANGE1.put("J#1#33", "11#1#33");
+        CHANGE1.put("J#2#34", "11#2#34");
+        CHANGE1.put("J#3#35", "11#3#35");
 
-        CHANGE1.put("Q#0#36","12#0#36");
-        CHANGE1.put("Q#1#37","12#1#37");
-        CHANGE1.put("Q#2#38","12#2#38");
-        CHANGE1.put("Q#3#39","12#3#39");
+        CHANGE1.put("Q#0#36", "12#0#36");
+        CHANGE1.put("Q#1#37", "12#1#37");
+        CHANGE1.put("Q#2#38", "12#2#38");
+        CHANGE1.put("Q#3#39", "12#3#39");
 
-        CHANGE1.put("K#0#40","13#0#40");
-        CHANGE1.put("K#1#41","13#1#41");
-        CHANGE1.put("K#2#42","13#2#42");
-        CHANGE1.put("K#3#43","13#3#43");
+        CHANGE1.put("K#0#40", "13#0#40");
+        CHANGE1.put("K#1#41", "13#1#41");
+        CHANGE1.put("K#2#42", "13#2#42");
+        CHANGE1.put("K#3#43", "13#3#43");
 
-        CHANGE1.put("A#0#44","14#0#44");
-        CHANGE1.put("A#1#45","14#1#45");
-        CHANGE1.put("A#2#46","14#2#46");
-        CHANGE1.put("A#3#47","14#3#47");
+        CHANGE1.put("A#0#44", "14#0#44");
+        CHANGE1.put("A#1#45", "14#1#45");
+        CHANGE1.put("A#2#46", "14#2#46");
+        CHANGE1.put("A#3#47", "14#3#47");
 
 
-        CHANGE2.put("J#0#32","11#0#32");
-        CHANGE2.put("J#1#33","11#1#33");
-        CHANGE2.put("J#2#34","11#2#34");
-        CHANGE2.put("J#3#35","11#3#35");
+        CHANGE2.put("J#0#32", "11#0#32");
+        CHANGE2.put("J#1#33", "11#1#33");
+        CHANGE2.put("J#2#34", "11#2#34");
+        CHANGE2.put("J#3#35", "11#3#35");
 
-        CHANGE2.put("Q#0#36","12#0#36");
-        CHANGE2.put("Q#1#37","12#1#37");
-        CHANGE2.put("Q#2#38","12#2#38");
-        CHANGE2.put("Q#3#39","12#3#39");
+        CHANGE2.put("Q#0#36", "12#0#36");
+        CHANGE2.put("Q#1#37", "12#1#37");
+        CHANGE2.put("Q#2#38", "12#2#38");
+        CHANGE2.put("Q#3#39", "12#3#39");
 
-        CHANGE2.put("K#0#40","13#0#40");
-        CHANGE2.put("K#1#41","13#1#41");
-        CHANGE2.put("K#2#42","13#2#42");
-        CHANGE2.put("K#3#43","13#3#43");
+        CHANGE2.put("K#0#40", "13#0#40");
+        CHANGE2.put("K#1#41", "13#1#41");
+        CHANGE2.put("K#2#42", "13#2#42");
+        CHANGE2.put("K#3#43", "13#3#43");
 
-        CHANGE2.put("A#0#44","1#0#44");
-        CHANGE2.put("A#1#45","1#1#45");
-        CHANGE2.put("A#2#46","1#2#46");
-        CHANGE2.put("A#3#473","1#3#47");
+        CHANGE2.put("A#0#44", "1#0#44");
+        CHANGE2.put("A#1#45", "1#1#45");
+        CHANGE2.put("A#2#46", "1#2#46");
+        CHANGE2.put("A#3#473", "1#3#47");
 
     }
 
@@ -205,9 +205,9 @@ public class Douniu extends AbstractPuke {
                 }
 
                 // 如果是同花，合理
-               if(isSameFlower(next)){
-                   return true;
-               }
+                if (isSameFlower(next)) {
+                    return true;
+                }
 
             } else { // 如果都是顺子，比较最后一张牌面大小
 
@@ -222,7 +222,7 @@ public class Douniu extends AbstractPuke {
 
                 //================== 上家是金刚 ============================
                 // 则本次也必须是金刚，而且最后一张牌要比上家大
-                if(isKingKong(last)&&isKingKong(next) && getMaxValue(next) > getMaxValue(last)){
+                if (isKingKong(last) && isKingKong(next) && getMaxValue(next) > getMaxValue(last)) {
                     return true;
                 }
 
@@ -239,30 +239,30 @@ public class Douniu extends AbstractPuke {
                         return true;
                     }
 
-                    if((nco && isKingKong(next))){// 上家是普通顺子，本次是金刚
+                    if ((nco && isKingKong(next))) {// 上家是普通顺子，本次是金刚
                         return true;
                     }
                     // 上家是顺子，本次同花色
-                    if(isSameFlower(next)){
+                    if (isSameFlower(next)) {
                         return true;
                     }
                 }
 
                 //================== 上家是同花 ============================
                 boolean lsf = isSameFlower(last);
-                if(lsf){
+                if (lsf) {
                     // 本次 3带2，4带1，合理
-                    if(isTake(next)){
+                    if (isTake(next)) {
                         return true;
                     }
 
                     // 本次 金刚 合理
-                    if (isKingKong(next)){
+                    if (isKingKong(next)) {
                         return true;
                     }
 
                     // 本次也是同花，但有一张牌比上家大，合理
-                    if(isSameFlower(next)&& getMaxValue(next) > getMaxValue(last)){
+                    if (isSameFlower(next) && getMaxValue(next) > getMaxValue(last)) {
                         return true;
                     }
                 }
@@ -272,17 +272,16 @@ public class Douniu extends AbstractPuke {
     }
 
 
-
-    public boolean isKingKong(String[] array){
+    public boolean isKingKong(String[] array) {
 
         maopao(array);
 
         for (int i = 1; i < array.length; i++) {
-            if (Integer.valueOf(array[i].split("#")[0]) != Integer.valueOf(array[i-1].split("#")[0])+1) {
+            if (Integer.valueOf(array[i].split("#")[0]) != Integer.valueOf(array[i - 1].split("#")[0]) + 1) {
                 return false;
             }
 
-            if(Integer.valueOf(array[i].split("#")[1]) != Integer.valueOf(array[i-1].split("#")[1])){
+            if (Integer.valueOf(array[i].split("#")[1]) != Integer.valueOf(array[i - 1].split("#")[1])) {
                 return false;
             }
         }
@@ -292,12 +291,13 @@ public class Douniu extends AbstractPuke {
 
     /**
      * 是否同花色
+     *
      * @param array
      * @return
      */
-    public boolean isSameFlower(String[] array){
+    public boolean isSameFlower(String[] array) {
         for (int i = 1; i < array.length; i++) {
-            if(Integer.valueOf(array[i].split("#")[1]) != Integer.valueOf(array[i-1].split("#")[1])){
+            if (Integer.valueOf(array[i].split("#")[1]) != Integer.valueOf(array[i - 1].split("#")[1])) {
                 return false;
             }
         }
@@ -377,17 +377,17 @@ public class Douniu extends AbstractPuke {
         return (s.contains("3") && s.contains("2")) || (s.contains("4") && s.contains("1"));
     }
 
-    public String getFromChange(Map<String,String> map,String v){
+    public String getFromChange(Map<String, String> map, String v) {
 
-        if(map.containsKey(v)){
+        if (map.containsKey(v)) {
             return map.get(v);
         }
 
         return v;
     }
 
-    public boolean isCouple(String[] array){
-       return array[0].split("#")[0].equals(array[1].split("#")[0]);
+    public boolean isCouple(String[] array) {
+        return array.length == 2 && array[0].split("#")[0].equals(array[1].split("#")[0]);
     }
 
     /**
@@ -400,40 +400,40 @@ public class Douniu extends AbstractPuke {
 
         String[] temp = new String[array.length];
 
-         System.arraycopy(array,0,temp,0,array.length);
+        System.arraycopy(array, 0, temp, 0, array.length);
 
-        for (int i = 0; i < temp.length; i++){
-            temp[i]=getFromChange(CHANGE1,temp[i]);
+        for (int i = 0; i < temp.length; i++) {
+            temp[i] = getFromChange(CHANGE1, temp[i]);
         }
 
-         maopao(temp);
+        maopao(temp);
 
-        boolean flag=true;
+        boolean flag = true;
 
         for (int i = 1; i < temp.length; i++) {
-            if (Integer.valueOf(temp[i].split("#")[0]) != Integer.valueOf(temp[i-1].split("#")[0])+1) {
-                flag= false;
+            if (Integer.valueOf(temp[i].split("#")[0]) != Integer.valueOf(temp[i - 1].split("#")[0]) + 1) {
+                flag = false;
                 break;
             }
         }
 
 
-        if(!flag){
+        if (!flag) {
 
-            flag=true;
+            flag = true;
 
             temp = new String[array.length];
 
-            System.arraycopy(array,0,temp,0,array.length);
+            System.arraycopy(array, 0, temp, 0, array.length);
 
-            for (int i = 0; i < temp.length; i++){
-                temp[i]=getFromChange(CHANGE2,temp[i]);
+            for (int i = 0; i < temp.length; i++) {
+                temp[i] = getFromChange(CHANGE2, temp[i]);
             }
 
             maopao(temp);
             for (int i = 1; i < temp.length; i++) {
-                if (Integer.valueOf(temp[i].split("#")[0]) != Integer.valueOf(temp[i-1].split("#")[0])+1) {
-                    flag= false;
+                if (Integer.valueOf(temp[i].split("#")[0]) != Integer.valueOf(temp[i - 1].split("#")[0]) + 1) {
+                    flag = false;
                     break;
                 }
             }
@@ -469,7 +469,7 @@ public class Douniu extends AbstractPuke {
     public static void maopao(String[] arr) {
         for (int i = 0; i < arr.length - 1; i++) {
             for (int j = i + 1; j < arr.length; j++) {
-                if (arr[i].compareTo(arr[j])>0) {
+                if (arr[i].compareTo(arr[j]) > 0) {
                     //让左边最大
                     String temp = arr[j];
                     arr[j] = arr[i];

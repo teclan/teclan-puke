@@ -19,7 +19,7 @@ public class DeskCache {
         stack.push(item);
     }
 
-    private static Stack<Item> getStack(String deskId) {
+    public static Stack<Item> getStack(String deskId) {
 
         Stack<Item> stack = CACHE.get(deskId);
 
@@ -31,4 +31,13 @@ public class DeskCache {
         return stack;
     }
 
+
+    public static  Item peek(String deskId){
+        Stack<Item> stack= DeskCache.getStack(deskId);
+
+        if(stack.size()==0){
+            return null;
+        }
+        return  stack.peek();
+    }
 }

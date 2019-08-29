@@ -41,4 +41,13 @@ public interface Puke {
      * @return
      */
     public  String getHumanInfo(String singelCard);
+
+
+    /**
+     * 出牌验证
+     * @param last 上次出牌
+     * @param next  本次即将出牌
+     * @return
+     */
+    public boolean vaid(String deskId,String[] next);
 }

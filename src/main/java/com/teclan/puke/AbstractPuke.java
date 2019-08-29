@@ -11,6 +11,7 @@ public abstract class AbstractPuke implements Puke {
 
     public abstract String[] qSort(String[] card, int start, int end);
 
+    public abstract   boolean vaid(String deskId,String[] next);
 
     /**
      * 洗牌
@@ -35,16 +36,14 @@ public abstract class AbstractPuke implements Puke {
      * @param index
      * @param to
      */
-    private  void swap(String[] card, int index, int to) {
+    private void swap(String[] card, int index, int to) {
         String temp = card[index];
         card[index] = card[to];
         card[to] = temp;
     }
 
 
-
-
-    public  String getHumanInfo(String singelCard) {
+    public String getHumanInfo(String singelCard) {
         if (singelCard == null) {
             return "";
         }
@@ -80,7 +79,6 @@ public abstract class AbstractPuke implements Puke {
             return String.format("%s%s", flower, item[0]);
         }
     }
-
 
 
 }

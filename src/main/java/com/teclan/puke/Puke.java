@@ -33,4 +33,12 @@ public interface Puke {
      * @return
      */
     public String[][] deal();
+
+
+    /**
+     * 牌面解释
+     * @param singelCard
+     * @return
+     */
+    public  String getHumanInfo(String singelCard);
 }

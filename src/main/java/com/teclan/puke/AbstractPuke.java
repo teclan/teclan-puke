@@ -44,7 +44,7 @@ public abstract class AbstractPuke implements Puke {
 
 
 
-    public   String getHumanInfo(String singelCard) {
+    public  String getHumanInfo(String singelCard) {
         if (singelCard == null) {
             return "";
         }

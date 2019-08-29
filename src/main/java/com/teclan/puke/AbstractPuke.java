@@ -48,7 +48,7 @@ public abstract class AbstractPuke implements Puke {
             return "";
         }
 
-        String[] item = singelCard.split("-");
+        String[] item = singelCard.split("#");
         String flower = "";
 
         if ("G".equals(item[0])) {

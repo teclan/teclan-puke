@@ -48,10 +48,10 @@ public class Douniu extends AbstractPuke {
         CHANGE1.put("K#2#42","13#2#42");
         CHANGE1.put("K#3#43","13#3#43");
 
-        CHANGE1.put("A#0#40","14#0#44");
-        CHANGE1.put("A#1#41","14#1#45");
-        CHANGE1.put("A#2#42","14#2#46");
-        CHANGE1.put("A#3#43","14#3#47");
+        CHANGE1.put("A#0#44","14#0#44");
+        CHANGE1.put("A#1#45","14#1#45");
+        CHANGE1.put("A#2#46","14#2#46");
+        CHANGE1.put("A#3#47","14#3#47");
 
 
         CHANGE2.put("J#0#32","11#0#32");
@@ -69,10 +69,10 @@ public class Douniu extends AbstractPuke {
         CHANGE2.put("K#2#42","13#2#42");
         CHANGE2.put("K#3#43","13#3#43");
 
-        CHANGE2.put("A#0#40","1#0#44");
-        CHANGE2.put("A#1#41","1#1#45");
-        CHANGE2.put("A#2#42","1#2#46");
-        CHANGE2.put("A#3#43","1#3#47");
+        CHANGE2.put("A#0#44","1#0#44");
+        CHANGE2.put("A#1#45","1#1#45");
+        CHANGE2.put("A#2#46","1#2#46");
+        CHANGE2.put("A#3#473","1#3#47");
 
     }
 
@@ -165,9 +165,9 @@ public class Douniu extends AbstractPuke {
         // 出对子
         if (length == 2) {
 
-            boolean duizi = next[0].split("#")[0].equals(next[1].split("#")[0]);
+            boolean isCouple = isCouple(next);
 
-            if (!duizi) {
+            if (!isCouple) {
                 // 不是对子，出牌不合规则
                 return false;
             }
@@ -386,6 +386,10 @@ public class Douniu extends AbstractPuke {
         return v;
     }
 
+    public boolean isCouple(String[] array){
+       return array[0].split("#")[0].equals(array[1].split("#")[0]);
+    }
+
     /**
      * 判断是否是普通顺子
      *
@@ -398,7 +402,7 @@ public class Douniu extends AbstractPuke {
 
          System.arraycopy(array,0,temp,0,array.length);
 
-        for (int i = 1; i < temp.length; i++){
+        for (int i = 0; i < temp.length; i++){
             temp[i]=getFromChange(CHANGE1,temp[i]);
         }
 
@@ -407,7 +411,7 @@ public class Douniu extends AbstractPuke {
         boolean flag=true;
 
         for (int i = 1; i < temp.length; i++) {
-            if (Integer.valueOf(temp[i].split("#")[i]) != Integer.valueOf(temp[i].split("#")[i-1])+1) {
+            if (Integer.valueOf(temp[i].split("#")[0]) != Integer.valueOf(temp[i-1].split("#")[0])+1) {
                 flag= false;
                 break;
             }
@@ -416,16 +420,19 @@ public class Douniu extends AbstractPuke {
 
         if(!flag){
 
+            flag=true;
+
             temp = new String[array.length];
 
             System.arraycopy(array,0,temp,0,array.length);
 
-            for (int i = 1; i < temp.length; i++){
+            for (int i = 0; i < temp.length; i++){
                 temp[i]=getFromChange(CHANGE2,temp[i]);
             }
 
+            maopao(temp);
             for (int i = 1; i < temp.length; i++) {
-                if (Integer.valueOf(temp[i].split("#")[i]) != Integer.valueOf(temp[i].split("#")[i-1])+1) {
+                if (Integer.valueOf(temp[i].split("#")[0]) != Integer.valueOf(temp[i-1].split("#")[0])+1) {
                     flag= false;
                     break;
                 }

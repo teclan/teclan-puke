@@ -21,4 +21,14 @@ public class Helper {
             System.out.println(String.format("%s", puke.getHumanInfo(card[i])));
         }
     }
+
+    public static void display(String[] card){
+
+        Douniu douniu = new Douniu();
+        System.out.println("是否顺子:"+douniu.isCommonOrder(card));
+        System.out.println("是否担子:"+douniu.isTake(card));
+        System.out.println("是否金刚:"+douniu.isKingKong(card));
+        System.out.println("是否同花:"+douniu.isSameFlower(card));
+        System.out.println("是否对子:"+douniu.isCouple(card));
+    }
 }

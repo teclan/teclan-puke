@@ -72,7 +72,7 @@ public class Douniu extends AbstractPuke {
         CHANGE2.put("A#0#44", "1#0#44");
         CHANGE2.put("A#1#45", "1#1#45");
         CHANGE2.put("A#2#46", "1#2#46");
-        CHANGE2.put("A#3#473", "1#3#47");
+        CHANGE2.put("A#3#47", "1#3#47");
 
     }
 
@@ -274,18 +274,42 @@ public class Douniu extends AbstractPuke {
 
     public boolean isKingKong(String[] array) {
 
-        maopao(array);
+        String[] temp  =afterChange(array,CHANGE1);
+        maopao(temp);
+
+        boolean flag = true;
 
         for (int i = 1; i < array.length; i++) {
-            if (Integer.valueOf(array[i].split("#")[0]) != Integer.valueOf(array[i - 1].split("#")[0]) + 1) {
-                return false;
+            if (Integer.valueOf(temp[i].split("#")[0]) != Integer.valueOf(temp[i - 1].split("#")[0]) + 1) {
+                flag= false;
+                break;
             }
 
-            if (Integer.valueOf(array[i].split("#")[1]) != Integer.valueOf(array[i - 1].split("#")[1])) {
-                return false;
+            if (Integer.valueOf(temp[i].split("#")[1]) != Integer.valueOf(temp[i - 1].split("#")[1])) {
+                flag= false;
+                break;
             }
         }
-        return true;
+
+        if(!flag){
+
+            flag=true;
+            temp  =afterChange(array,CHANGE2);
+
+            for (int i = 1; i < array.length; i++) {
+                if (Integer.valueOf(temp[i].split("#")[0]) != Integer.valueOf(temp[i - 1].split("#")[0]) + 1) {
+                    flag= false;
+                    break;
+                }
+
+                if (Integer.valueOf(temp[i].split("#")[1]) != Integer.valueOf(temp[i - 1].split("#")[1])) {
+                    flag= false;
+                    break;
+                }
+            }
+        }
+
+        return flag;
     }
 
 
@@ -390,6 +414,19 @@ public class Douniu extends AbstractPuke {
         return array.length == 2 && array[0].split("#")[0].equals(array[1].split("#")[0]);
     }
 
+
+    private String[] afterChange(String[] array,Map<String,String> map){
+        String[] temp = new String[array.length];
+
+        System.arraycopy(array, 0, temp, 0, array.length);
+
+        for (int i = 0; i < temp.length; i++) {
+            temp[i] = getFromChange(map, temp[i]);
+        }
+
+        return temp;
+    }
+
     /**
      * 判断是否是普通顺子
      *
@@ -398,14 +435,7 @@ public class Douniu extends AbstractPuke {
      */
     public boolean isCommonOrder(String[] array) {
 
-        String[] temp = new String[array.length];
-
-        System.arraycopy(array, 0, temp, 0, array.length);
-
-        for (int i = 0; i < temp.length; i++) {
-            temp[i] = getFromChange(CHANGE1, temp[i]);
-        }
-
+        String[] temp =afterChange(array,CHANGE1);
         maopao(temp);
 
         boolean flag = true;
@@ -422,13 +452,7 @@ public class Douniu extends AbstractPuke {
 
             flag = true;
 
-            temp = new String[array.length];
-
-            System.arraycopy(array, 0, temp, 0, array.length);
-
-            for (int i = 0; i < temp.length; i++) {
-                temp[i] = getFromChange(CHANGE2, temp[i]);
-            }
+           temp =afterChange(array,CHANGE2);
 
             maopao(temp);
             for (int i = 1; i < temp.length; i++) {
@@ -469,7 +493,7 @@ public class Douniu extends AbstractPuke {
     public static void maopao(String[] arr) {
         for (int i = 0; i < arr.length - 1; i++) {
             for (int j = i + 1; j < arr.length; j++) {
-                if (arr[i].compareTo(arr[j]) > 0) {
+                if (Integer.valueOf(arr[i].split("#")[0]) > Integer.valueOf(arr[j].split("#")[0])) {
                     //让左边最大
                     String temp = arr[j];
                     arr[j] = arr[i];
